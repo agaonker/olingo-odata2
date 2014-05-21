@@ -13,7 +13,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>olingo-odata2-annotation-processor-core</artifactId>
+  <artifactId>olingo-odata2-annotation-processor-ref</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
 
@@ -25,6 +25,7 @@
   </parent>
 
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
@@ -53,7 +54,8 @@
               *
             </Import-Package>
             <Export-Package>
-              org.apache.olingo.odata2.annotation.processor.core.rt;version=${project.version}
+              org.apache.olingo.odata2.annotation.processor.ref;version=${project.version},
+              org.apache.olingo.odata2.annotation.processor.ref.*;version=${project.version}
             </Export-Package>
             <Bundle-DocURL>${project.url}</Bundle-DocURL>
             <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
@@ -67,30 +69,40 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.olingo</groupId>
+      <artifactId>olingo-odata2-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.olingo</groupId>
+      <artifactId>olingo-odata2-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.olingo</groupId>
       <artifactId>olingo-odata2-annotation-processor-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.olingo</groupId>
-      <artifactId>olingo-odata2-api-annotation</artifactId>
+      <artifactId>olingo-odata2-annotation-processor-core</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.olingo</groupId>
-      <artifactId>olingo-odata2-api</artifactId>
-      <version>${project.version}</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${slf4j.version}</version>
     </dependency>
     <!-- Test dependencies -->
     <dependency>
       <groupId>org.apache.olingo</groupId>
-      <artifactId>olingo-odata2-core</artifactId>
+      <artifactId>olingo-odata2-testutil</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.olingo</groupId>
-      <artifactId>olingo-odata2-testutil</artifactId>
-      <version>${project.version}</version>
+      <groupId>xmlunit</groupId>
+      <artifactId>xmlunit</artifactId>
+      <version>${xmlunit.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
